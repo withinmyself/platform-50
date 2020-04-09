@@ -1,0 +1,4 @@
+
+screen_width = 80
+screen_height = 50
+
