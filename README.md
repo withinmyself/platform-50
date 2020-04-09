@@ -4,3 +4,7 @@ A Roguelike game focused around Mechs known as Walkers.  You have to leave your 
 This will be created using Python and tcod mostly.  I'm only in the 'proof of concept' stage for most of this but I do plan on pushing code through very soon.
 
 E.T. Deubner - April 9, 2020
+
+Well.  Everything worked exactly like I hoped it would and I'm able to render and take control of a Mech-like thing that I'm calling Walkers using only ASCII.  I'm getting ready to put all the 'walkers' code into its own module and then very soon I'll start working on being able to enter and exit the Walker on the fly.  I need to take a step back from the code and actually put down some real 'strategies' instead of just winging it as I go forward.  To be honest I thought it would take longer to even get this working so yea... pretty cool stuff.  I think might actually work.  And be fun too!!!!
+
+E.T. Deubner - April 9, 2020 - 4:00PM
