@@ -2,7 +2,8 @@ import tcod
 from game.variables import *
 from game.input import handle_keys
 from game.entity import Entity
-from game.render_functions import render_all, clear_all
+from game.game_map import GameMap
+from functions.render_functions import render_all_entities, clear_all, render_map
 
 def main():
 
@@ -14,6 +15,12 @@ def main():
 
     tcod.console_init_root(screen_width, screen_height, 'Platform 50', False)
     con = tcod.console_new(screen_width, screen_height)
+    game_map = GameMap(map_width, map_height)
+
+    colors = {
+    'dark_wall' : tcod.Color(0, 0, 100),
+    'dark_ground' : tcod.Color(50, 50, 150)
+    }
 
     key = tcod.Key()
     mouse = tcod.Mouse()
@@ -21,7 +28,8 @@ def main():
     while not tcod.console_is_window_closed():
         tcod.sys_check_for_event(tcod.EVENT_KEY_PRESS, key, mouse)
 
-        render_all(con, entities, screen_width, screen_height) 
+        render_all_entities(con, entities, screen_width, screen_height)
+        render_map(con, entities, game_map, colors)
 
         # tcod.console_set_default_foreground(con, tcod.orange)
         # tcod.console_put_char(con, player.x, player.y, '@', tcod.BKGND_NONE)
@@ -64,7 +72,8 @@ def main():
 
         if move:
             dx, dy = move # When we used get on 'move' the result is a list of two numbers (if move even happened)
-            player.move(dx, dy)
+            if not game_map.is_blocked(player.x + dx, player.y + dy):
+                player.move(dx, dy)
             # player.x += dx
             # player.y += dy  Depending on which key we pressed the values are calculated and updated so we move in the correct direction
 
