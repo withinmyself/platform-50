@@ -1,11 +1,14 @@
 import tcod
 from game.variables import *
 from game.input import handle_keys
+from game.entity import Entity
+from game.render_functions import render_all, clear_all
 
 def main():
 
-    me_x = int(screen_width / 2)
-    me_y = int(screen_height / 2)
+    player = Entity(int(screen_width / 2), int(screen_height / 2), '@', tcod.orange, player=True)
+    npc = Entity(int(screen_width / 2 - 5), int(screen_height / 2), '@', tcod.yellow, player=False)
+    entities = [npc, player]
 
     tcod.console_set_custom_font('arial10x10.png', tcod.FONT_TYPE_GRAYSCALE | tcod.FONT_LAYOUT_TCOD)
 
@@ -18,32 +21,36 @@ def main():
     while not tcod.console_is_window_closed():
         tcod.sys_check_for_event(tcod.EVENT_KEY_PRESS, key, mouse)
 
-        tcod.console_set_default_foreground(con, tcod.orange)
-        tcod.console_put_char(con, me_x, me_y, '@', tcod.BKGND_NONE)
-        tcod.console_put_char(con, me_x - 1, me_y, '[', tcod.BKGND_NONE)
-        tcod.console_put_char(con, me_x + 1, me_y, ']', tcod.BKGND_NONE)
-        tcod.console_put_char(con, me_x - 2, me_y, '[', tcod.BKGND_NONE)
-        tcod.console_put_char(con, me_x + 2, me_y, ']', tcod.BKGND_NONE)
-        tcod.console_put_char(con, me_x - 3, me_y, ':', tcod.BKGND_NONE)
-        tcod.console_put_char(con, me_x + 3, me_y, ':', tcod.BKGND_NONE)
-        tcod.console_put_char(con, me_x - 1, me_y + 1, '|', tcod.BKGND_NONE)
-        tcod.console_put_char(con, me_x + 1, me_y + 1, '|', tcod.BKGND_NONE)
+        render_all(con, entities, screen_width, screen_height) 
+
+        # tcod.console_set_default_foreground(con, tcod.orange)
+        # tcod.console_put_char(con, player.x, player.y, '@', tcod.BKGND_NONE)
+        # tcod.console_put_char(con, player.x - 1, player.y, '[', tcod.BKGND_NONE)
+        # tcod.console_put_char(con, player.x + 1, player.y, ']', tcod.BKGND_NONE)
+        # tcod.console_put_char(con, player.x - 2, player.y, '[', tcod.BKGND_NONE)
+        # tcod.console_put_char(con, player.x + 2, player.y, ']', tcod.BKGND_NONE)
+        # tcod.console_put_char(con, player.x - 3, player.y, ':', tcod.BKGND_NONE)
+        # tcod.console_put_char(con, player.x + 3, player.y, ':', tcod.BKGND_NONE)
+        # tcod.console_put_char(con, player.x - 1, player.y + 1, '|', tcod.BKGND_NONE)
+        # tcod.console_put_char(con, player.x + 1, player.y + 1, '|', tcod.BKGND_NONE)
 
 
-        #  Console_blit is bringing forth our new console as the default viewable console.
-        tcod.console_blit(con, 0, 0, screen_width, screen_height, 0, 0, 0)
+        # #  Console_blit is bringing forth our new console as the default viewable console.
+        # tcod.console_blit(con, 0, 0, screen_width, screen_height, 0, 0, 0)
         
         tcod.console_flush()
 
-        tcod.console_put_char(con, me_x, me_y, ' ', tcod.BKGND_NONE)
-        tcod.console_put_char(con, me_x - 1, me_y, ' ', tcod.BKGND_NONE)
-        tcod.console_put_char(con, me_x + 1, me_y, ' ', tcod.BKGND_NONE)
-        tcod.console_put_char(con, me_x - 2, me_y + 1, ' ', tcod.BKGND_NONE)
-        tcod.console_put_char(con, me_x + 2, me_y + 1, ' ', tcod.BKGND_NONE)
-        tcod.console_put_char(con, me_x - 3, me_y, ' ', tcod.BKGND_NONE)
-        tcod.console_put_char(con, me_x + 3, me_y, ' ', tcod.BKGND_NONE)
-        tcod.console_put_char(con, me_x - 1, me_y + 1, ' ', tcod.BKGND_NONE)
-        tcod.console_put_char(con, me_x + 1, me_y + 1, ' ', tcod.BKGND_NONE)
+        clear_all(con, entities)
+
+        # tcod.console_put_char(con, player.x, player.y, ' ', tcod.BKGND_NONE)
+        # tcod.console_put_char(con, player.x - 1, player.y, ' ', tcod.BKGND_NONE)
+        # tcod.console_put_char(con, player.x + 1, player.y, ' ', tcod.BKGND_NONE)
+        # tcod.console_put_char(con, player.x - 2, player.y + 1, ' ', tcod.BKGND_NONE)
+        # tcod.console_put_char(con, player.x + 2, player.y + 1, ' ', tcod.BKGND_NONE)
+        # tcod.console_put_char(con, player.x - 3, player.y, ' ', tcod.BKGND_NONE)
+        # tcod.console_put_char(con, player.x + 3, player.y, ' ', tcod.BKGND_NONE)
+        # tcod.console_put_char(con, player.x - 1, player.y + 1, ' ', tcod.BKGND_NONE)
+        # tcod.console_put_char(con, player.x + 1, player.y + 1, ' ', tcod.BKGND_NONE)
 
         # We hand over the current key result into the handle_keys function
         # This function returns a library for us that we name action
@@ -57,8 +64,9 @@ def main():
 
         if move:
             dx, dy = move # When we used get on 'move' the result is a list of two numbers (if move even happened)
-            me_x += dx
-            me_y += dy # Depending on which key we pressed the values are calculated and updated so we move in the correct direction
+            player.move(dx, dy)
+            # player.x += dx
+            # player.y += dy  Depending on which key we pressed the values are calculated and updated so we move in the correct direction
 
         # This dictionary key returns a boolean value that then says to return True which breaks the game loop.
         if exit:
