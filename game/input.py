@@ -20,5 +20,9 @@ def handle_keys(key):
         # Exit the game
         return {'exit': True}
 
+    elif key.vk == tcod.KEY_BACKSPACE:
+        # Power off Walker and get out
+        return {'power': False}
+
     # No key was pressed
     return {}

@@ -1,74 +1,43 @@
 import tcod
-from game.variables import *
+
 from game.input import handle_keys
-from game.entity import Entity
-from game.game_map import GameMap
-from functions.render_functions import render_all_entities, clear_all, render_map
+
+from functions.render_functions import render_all_entities, \
+                                clear_all, render_map, game_map, \
+                                player, npc, entities, con
+from game.variables import *
 
 def main():
 
-    player = Entity(int(screen_width / 2), int(screen_height / 2), '@', tcod.orange, player=True)
-    npc = Entity(int(screen_width / 2 - 5), int(screen_height / 2), '@', tcod.yellow, player=False)
-    entities = [npc, player]
-
     tcod.console_set_custom_font('arial10x10.png', tcod.FONT_TYPE_GRAYSCALE | tcod.FONT_LAYOUT_TCOD)
-
     tcod.console_init_root(screen_width, screen_height, 'Platform 50', False)
-    con = tcod.console_new(screen_width, screen_height)
-    game_map = GameMap(map_width, map_height)
 
-    colors = {
-    'dark_wall' : tcod.Color(0, 0, 100),
-    'dark_ground' : tcod.Color(50, 50, 150)
-    }
-
-    key = tcod.Key()
-    mouse = tcod.Mouse()
+    keyboard_activity = tcod.Key()
+    mouse_activity = tcod.Mouse()
 
     while not tcod.console_is_window_closed():
-        tcod.sys_check_for_event(tcod.EVENT_KEY_PRESS, key, mouse)
+        tcod.sys_check_for_event(tcod.EVENT_KEY_PRESS, keyboard_activity, mouse_activity)
 
-        render_all_entities(con, entities, screen_width, screen_height)
-        render_map(con, entities, game_map, colors)
-
-        # tcod.console_set_default_foreground(con, tcod.orange)
-        # tcod.console_put_char(con, player.x, player.y, '@', tcod.BKGND_NONE)
-        # tcod.console_put_char(con, player.x - 1, player.y, '[', tcod.BKGND_NONE)
-        # tcod.console_put_char(con, player.x + 1, player.y, ']', tcod.BKGND_NONE)
-        # tcod.console_put_char(con, player.x - 2, player.y, '[', tcod.BKGND_NONE)
-        # tcod.console_put_char(con, player.x + 2, player.y, ']', tcod.BKGND_NONE)
-        # tcod.console_put_char(con, player.x - 3, player.y, ':', tcod.BKGND_NONE)
-        # tcod.console_put_char(con, player.x + 3, player.y, ':', tcod.BKGND_NONE)
-        # tcod.console_put_char(con, player.x - 1, player.y + 1, '|', tcod.BKGND_NONE)
-        # tcod.console_put_char(con, player.x + 1, player.y + 1, '|', tcod.BKGND_NONE)
-
-
-        # #  Console_blit is bringing forth our new console as the default viewable console.
-        # tcod.console_blit(con, 0, 0, screen_width, screen_height, 0, 0, 0)
+        render_all_entities()
+        render_map()
         
         tcod.console_flush()
 
-        clear_all(con, entities)
-
-        # tcod.console_put_char(con, player.x, player.y, ' ', tcod.BKGND_NONE)
-        # tcod.console_put_char(con, player.x - 1, player.y, ' ', tcod.BKGND_NONE)
-        # tcod.console_put_char(con, player.x + 1, player.y, ' ', tcod.BKGND_NONE)
-        # tcod.console_put_char(con, player.x - 2, player.y + 1, ' ', tcod.BKGND_NONE)
-        # tcod.console_put_char(con, player.x + 2, player.y + 1, ' ', tcod.BKGND_NONE)
-        # tcod.console_put_char(con, player.x - 3, player.y, ' ', tcod.BKGND_NONE)
-        # tcod.console_put_char(con, player.x + 3, player.y, ' ', tcod.BKGND_NONE)
-        # tcod.console_put_char(con, player.x - 1, player.y + 1, ' ', tcod.BKGND_NONE)
-        # tcod.console_put_char(con, player.x + 1, player.y + 1, ' ', tcod.BKGND_NONE)
+        clear_all()
 
         # We hand over the current key result into the handle_keys function
         # This function returns a library for us that we name action
-        action = handle_keys(key)
+        action = handle_keys(keyboard_activity)
 
         # We check this library for various results using the get method
         move = action.get('move')
         exit = action.get('exit')
+        # power = action.get('power')
         fullscreen = action.get('fullscreen')
 
+
+        # if not power:
+        #     player.power = False
 
         if move:
             dx, dy = move # When we used get on 'move' the result is a list of two numbers (if move even happened)
