@@ -14,9 +14,12 @@ def main():
 
     keyboard_activity = tcod.Key()
     mouse_activity = tcod.Mouse()
+    walker = False
+    walker_coordinate = []
 
     while not tcod.console_is_window_closed():
-        tcod.sys_check_for_event(tcod.EVENT_KEY_PRESS, keyboard_activity, mouse_activity)
+        if not walker:
+            tcod.sys_check_for_event(tcod.EVENT_KEY_PRESS, keyboard_activity, mouse_activity)
 
         render_all_entities()
         render_map()
@@ -32,7 +35,9 @@ def main():
         # We check this library for various results using the get method
         move = action.get('move')
         exit = action.get('exit')
-        # power = action.get('power')
+        exit_walker = action.get('exit_walker')
+        enter_walker = action.get('enter_walker')
+
         fullscreen = action.get('fullscreen')
 
 

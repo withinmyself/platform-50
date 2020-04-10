@@ -1,7 +1,7 @@
 import tcod
 
-from functions.walker_blueprints import build_light_runner, build_runner_off, \
-                                        destroy_light_runner
+from functions.walker_blueprints import build_light_runner, destroy_light_runner, \
+                                        build_lw_cell_2, destroy_lw_cell_2
 
 from game.entity import Entity
 from game.variables import *
@@ -36,6 +36,9 @@ def render_all_entities():
 
         if entity.player and entity.power:
             build_light_runner(con, entity)
+        else:
+            destroy_light_runner(con, entity)
+            build_lw_cell_2(con, entity)
 
     tcod.console_blit(con, 0, 0, screen_width, screen_height, 0, 0, 0)
     # Console_blit is bringing forth our new console as the default viewable console.

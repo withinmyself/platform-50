@@ -1,6 +1,7 @@
 from game.tile import Tile
 
 
+
 class GameMap:
     def __init__(self, width, height):
         self.width = width
@@ -12,15 +13,11 @@ class GameMap:
 
         x, y = 0, 22
 
-        for x in range(20, 40):
+        for x in range(10, 60):
             tiles[x][y].blocked = True
             tiles[x][y].block_sight = True
-        # tiles[30][22].blocked = True
-        # tiles[30][22].block_sight = True
-        # tiles[31][22].blocked = True
-        # tiles[31][22].block_sight = True
-        # tiles[32][22].blocked = True
-        # tiles[32][22].block_sight = True
+
+
 
         return tiles
 
