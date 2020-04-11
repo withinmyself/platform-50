@@ -14,18 +14,15 @@ def main():
 
     keyboard_activity = tcod.Key()
     mouse_activity = tcod.Mouse()
-    walker = False
-    walker_coordinate = []
+
 
     while not tcod.console_is_window_closed():
-        if not walker:
-            tcod.sys_check_for_event(tcod.EVENT_KEY_PRESS, keyboard_activity, mouse_activity)
+        tcod.sys_check_for_event(tcod.EVENT_KEY_PRESS, keyboard_activity, mouse_activity)
 
         render_all_entities()
         render_map()
         
         tcod.console_flush()
-
         clear_all()
 
         # We hand over the current key result into the handle_keys function
@@ -35,8 +32,8 @@ def main():
         # We check this library for various results using the get method
         move = action.get('move')
         exit = action.get('exit')
-        exit_walker = action.get('exit_walker')
-        enter_walker = action.get('enter_walker')
+        # exit_walker = action.get('exit_walker')
+        # enter_walker = action.get('enter_walker')
 
         fullscreen = action.get('fullscreen')
 

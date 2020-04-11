@@ -8,6 +8,7 @@ class Entity:
         self.char = char
         self.color = color
         self.player = player
+        self.power = power
         self.cell_1 = False
         self.cell_2 = False
         self.cell_3 = False

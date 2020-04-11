@@ -18,6 +18,10 @@ player = Entity(int(screen_width / 2), int(screen_height / 2), '@', tcod.white, 
 npc = Entity(int(screen_width / 2 - 5), int(screen_height / 2), '@', tcod.yellow, player=False)
 entities = [player]
 
+
+
+
+
 def render_map():
    # Draw all the tiles in the game map
     for y in range(game_map.height):

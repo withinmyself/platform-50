@@ -12,3 +12,7 @@ E.T. Deubner - April 9, 2020 - 4:00PM
 I'm on the final stretch to get a basic working version of stepping up to Walker and then activating it to get in.  The Walker will spring to life and allow your '@' to jump on board and start pioliting it.  I've done all the proof of concepts so I know everything is possible.  Just need to do the work now.  Hopefully by tomorrow I'll have something to show and I can post a little demo on Reddit and let people check it out themselves if they wanna play around with it.
 
 E.T. Deubner - April 10, 2020
+
+Updated a requirements.txt so as of right now, anything thats on GitHub can be cloned then you should set up a virtual environment (Python 3.7.3), install the requirements.txt using pip and run the program with 'python game_engine.py'.  Unfortuantely there isn't anything impressive there yet.  Just wanted to get that set up because I was probably going to forget.
+
+E.T.D. - April 10 - 8pm
