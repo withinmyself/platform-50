@@ -1,6 +1,6 @@
 import tcod
 
-from functions.walker_blueprints import build_light_runner, destroy_light_runner, \
+from functions.walker_blueprints import build_light_walker, destroy_light_walker, \
                                         build_lw_cell_2, destroy_lw_cell_2
 
 from game.entity import Entity

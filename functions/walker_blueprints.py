@@ -1,6 +1,6 @@
 import tcod
 from game.entity import Entity
-import time
+
 
 
 def draw_entity_part(con, alt_x, alt_y, entity_part, part_color):
@@ -12,17 +12,41 @@ def clear_entity_part(con, alt_x, alt_y):
     # by replacing the char with an empty space
     tcod.console_put_char(con, alt_x, alt_y, ' ', tcod.BKGND_NONE)
 
-def build_light_runner(con, entity):
-    draw_entity_part(con, entity.x - 1, entity.y, '(', tcod.grey)
-    draw_entity_part(con, entity.x + 1, entity.y, ')', tcod.grey)
-    draw_entity_part(con, entity.x - 2, entity.y, '(', tcod.black)
-    draw_entity_part(con, entity.x + 2, entity.y, ')', tcod.black)
-    draw_entity_part(con, entity.x - 3, entity.y, ':', tcod.red)
-    draw_entity_part(con, entity.x + 3, entity.y, ':', tcod.red)
-    draw_entity_part(con, entity.x - 1, entity.y + 1, '|', tcod.grey)
-    draw_entity_part(con, entity.x + 1, entity.y + 1, '|', tcod.grey)
-    draw_entity_part(con, entity.x - 1, entity.y + 2, '|', tcod.grey)
-    draw_entity_part(con, entity.x + 1, entity.y + 2, '|', tcod.grey)
+
+# __________
+# Light Walker
+#
+#    :((@)):
+#      | |
+#      | |
+# __________
+#
+# Coordinates: 
+# (, ), (, ), :, :, |, |, |, |
+# x: -1, +1, -2, +2, -3, +3, -1, +1, -1, +1
+# y: 0, 0, 0, 0, 0, 0, +1, +1, +2, +2
+def build_light_walker(con, entity):
+    x = (-1, +1, -2, +2, -3, +3, -1, +1, -1, +1)
+    y = (0, 0, 0, 0, 0, 0, +1, +1, +2, +2)
+    characters = ('(', ')', ')', '(', ':', ':', '|', '|', '|', '|')
+    colors = (tcod.grey, tcod.black, tcod.black, tcod.red, tcod.red, \
+              tcod.grey, tcod.grey, tcod.grey, tcod.grey)
+    for i in x:
+        for j in y:
+            for char in characters:
+                for color in colors:
+                    draw_entity_part(
+                        con, i, j, char, color)
+
+    # draw_entity_part(con, entity.x + 1, entity.y, ')', tcod.grey)
+    # draw_entity_part(con, entity.x - 2, entity.y, '(', tcod.black)
+    # draw_entity_part(con, entity.x + 2, entity.y, ')', tcod.black)
+    # draw_entity_part(con, entity.x - 3, entity.y, ':', tcod.red)
+    # draw_entity_part(con, entity.x + 3, entity.y, ':', tcod.red)
+    # draw_entity_part(con, entity.x - 1, entity.y + 1, '|', tcod.grey)
+    # draw_entity_part(con, entity.x + 1, entity.y + 1, '|', tcod.grey)
+    # draw_entity_part(con, entity.x - 1, entity.y + 2, '|', tcod.grey)
+    # draw_entity_part(con, entity.x + 1, entity.y + 2, '|', tcod.grey)
 
 def build_lw_cell_2(con, entity):
     draw_entity_part(con, entity.x - 2, entity.y, '(', tcod.grey)
@@ -61,22 +85,7 @@ def destroy_lw_cell_2(con, entity):
     for i in x:
         for j in y:
             clear_entity_part(
-                con, entity.x + x[i - 1], entity.y + y[j - 1] )
-    # clear_entity_part(con, entity.x - 2, entity.y)
-    # clear_entity_part(con, entity.x + 2, entity.y)
-    # clear_entity_part(con, entity.x - 3, entity.y)
-    # clear_entity_part(con, entity.x + 3, entity.y)
-    # clear_entity_part(con, entity.x - 4, entity.y)
-    # clear_entity_part(con, entity.x + 4, entity.y)
-    # clear_entity_part(con, entity.x - 1, entity.y + 1)
-    # clear_entity_part(con, entity.x + 1, entity.y + 1)
-    # clear_entity_part(con, entity.x - 1, entity.y + 2)
-    # clear_entity_part(con, entity.x + 1, entity.y + 2)
-    # clear_entity_part(con, entity.x, entity.y + 1)
-
-
-
-
+                con, entity.x + i, entity.y + j )
 
 def destroy_light_runner(con, entity):
     x = (-1, +1, -2, +2, -3, +3, -1, +1, -1, +1)
@@ -85,14 +94,3 @@ def destroy_light_runner(con, entity):
         for j in y:
             clear_entity_part(
                 con, entity.x + i, entity.y + j)
-    # clear_entity_part(con, entity.x - 1, entity.y)
-    # clear_entity_part(con, entity.x + 1, entity.y)
-    # clear_entity_part(con, entity.x - 2, entity.y)
-    # clear_entity_part(con, entity.x + 2, entity.y)
-    # clear_entity_part(con, entity.x - 3, entity.y)
-    # clear_entity_part(con, entity.x + 3, entity.y)
-    # clear_entity_part(con, entity.x - 1, entity.y + 1)
-    # clear_entity_part(con, entity.x + 1, entity.y + 1)
-    # clear_entity_part(con, entity.x - 1, entity.y + 2)
-    # clear_entity_part(con, entity.x + 1, entity.y + 2)
-
