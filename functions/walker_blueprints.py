@@ -1,5 +1,6 @@
 import tcod
 from game.entity import Entity
+import time
 
 
 def draw_entity_part(con, alt_x, alt_y, entity_part, part_color):
@@ -83,15 +84,15 @@ def destroy_light_runner(con, entity):
     for i in x:
         for j in y:
             clear_entity_part(
-                con, entity.x + x[i - 1], entity.y + y[j - 1] )
-    clear_entity_part(con, entity.x - 1, entity.y)
-    clear_entity_part(con, entity.x + 1, entity.y)
-    clear_entity_part(con, entity.x - 2, entity.y)
-    clear_entity_part(con, entity.x + 2, entity.y)
-    clear_entity_part(con, entity.x - 3, entity.y)
-    clear_entity_part(con, entity.x + 3, entity.y)
-    clear_entity_part(con, entity.x - 1, entity.y + 1)
-    clear_entity_part(con, entity.x + 1, entity.y + 1)
-    clear_entity_part(con, entity.x - 1, entity.y + 2)
-    clear_entity_part(con, entity.x + 1, entity.y + 2)
+                con, entity.x + i, entity.y + j)
+    # clear_entity_part(con, entity.x - 1, entity.y)
+    # clear_entity_part(con, entity.x + 1, entity.y)
+    # clear_entity_part(con, entity.x - 2, entity.y)
+    # clear_entity_part(con, entity.x + 2, entity.y)
+    # clear_entity_part(con, entity.x - 3, entity.y)
+    # clear_entity_part(con, entity.x + 3, entity.y)
+    # clear_entity_part(con, entity.x - 1, entity.y + 1)
+    # clear_entity_part(con, entity.x + 1, entity.y + 1)
+    # clear_entity_part(con, entity.x - 1, entity.y + 2)
+    # clear_entity_part(con, entity.x + 1, entity.y + 2)
 
