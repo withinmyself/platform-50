@@ -1,7 +1,10 @@
 import tcod
 
 from functions.walker_blueprints import build_light_walker, destroy_light_walker, \
-                                        build_lw_cell_2, destroy_lw_cell_2
+                                        build_lw_cell_2, destroy_lw_cell_2, \
+                                        build_lw_cell_3, build_lw_cell_4, \
+                                        build_lw_cell_5, build_lw_cell_6, \
+                                        build_lw_cell_7
 
 from game.entity import Entity
 from game.variables import *
@@ -12,11 +15,15 @@ colors = {
 'dark_wall' : tcod.Color(100, 0, 0),
 'dark_ground' : tcod.Color(50, 50, 150)
 }
+npc = True
 con = tcod.console_new(screen_width, screen_height)
 game_map = GameMap(map_width, map_height)
 player = Entity(int(screen_width / 2), int(screen_height / 2), '@', tcod.white, player=True)
-npc = Entity(int(screen_width / 2 - 5), int(screen_height / 2), '@', tcod.yellow, player=False)
-entities = [player]
+if npc:
+    npc = Entity(player.x, player.y, ' ', tcod.yellow, player=False)
+    entities = [player, npc]
+else:
+    entities = [player]
 
 
 
@@ -39,7 +46,7 @@ def render_all_entities():
         draw_entity(con, entity)
 
         if entity.player and entity.power:
-            build_lw_cell_2(con, entity)
+            build_lw_cell_7(con, entity)
         else:
             destroy_light_walker(con, entity)
             build_lw_cell_2(con, entity)

@@ -43,31 +43,60 @@ def build_lw_cell_2(con, entity):
     for i in range(0,11):
         draw_entity_part(con, entity.x + x[i], entity.y + y[i], characters[i], colors[i])
 
-    # draw_entity_part(con, entity.x - 2, entity.y, '(', tcod.grey)
-    # draw_entity_part(con, entity.x + 2, entity.y, ')', tcod.grey)
-    # draw_entity_part(con, entity.x - 3, entity.y, '(', tcod.black)
-    # draw_entity_part(con, entity.x + 3, entity.y, ')', tcod.black)
-    # draw_entity_part(con, entity.x - 4, entity.y, ':', tcod.red)
-    # draw_entity_part(con, entity.x + 4, entity.y, ':', tcod.red)
-    # draw_entity_part(con, entity.x - 1, entity.y + 1, '|', tcod.grey)
-    # draw_entity_part(con, entity.x + 1, entity.y + 1, '|', tcod.grey)
-    # draw_entity_part(con, entity.x - 1, entity.y + 2, '|', tcod.grey)
-    # draw_entity_part(con, entity.x + 1, entity.y + 2, '|', tcod.grey)
-    # draw_entity_part(con, entity.x , entity.y + 1, '=', tcod.grey)
 
 def build_lw_cell_3(con, entity):
-    draw_entity_part(con, entity.x - 2, entity.y, '(', tcod.grey)
-    draw_entity_part(con, entity.x + 2, entity.y, ')', tcod.grey)
-    draw_entity_part(con, entity.x - 3, entity.y, '(', tcod.black)
-    draw_entity_part(con, entity.x + 3, entity.y, ')', tcod.black)
-    draw_entity_part(con, entity.x - 4, entity.y, ':', tcod.red)
-    draw_entity_part(con, entity.x + 4, entity.y, ':', tcod.red)
-    draw_entity_part(con, entity.x - 2, entity.y + 1, '|', tcod.grey)
-    draw_entity_part(con, entity.x + 2, entity.y + 1, '|', tcod.grey)
-    draw_entity_part(con, entity.x - 1, entity.y + 2, '|', tcod.grey)
-    draw_entity_part(con, entity.x + 1, entity.y + 2, '|', tcod.grey)
-    draw_entity_part(con, entity.x , entity.y + 1, '=', tcod.grey)
-    draw_entity_part(con, entity.x , entity.y + 2, '=', tcod.grey)
+    x = (-2, +2, -3, +3, -4, +4, -2, +2, -1, +1, 0, 0)
+    y = ( 0, 0, 0, 0, 0, 0, +1, +1, +2, +2, +1, +2)
+    characters = ('(', ')', '(', ')', ':', ':', '|', '|', '|', '|', '=', '=')
+    colors = (tcod.grey, tcod.grey, tcod.black, tcod.black, tcod.red, tcod.red, \
+              tcod.grey, tcod.grey, tcod.grey, tcod.grey, tcod.grey, tcod.grey)
+    for i in range(0,12):
+        draw_entity_part(con, entity.x + x[i], entity.y + y[i], characters[i], colors[i])
+
+def build_lw_cell_4(con, entity):
+    x = (-2, +2, -3, +3, -4, +4, -2, +2, -1, +1, 0, 0)
+    y = ( +1, +1, +1, +1, +1, +1, +2, +2, +2, +2, +1, +2)
+    characters = ('(', ')', '(', ')', ':', ':', '|', '|', '|', '|', '=', '=')
+    colors = (tcod.grey, tcod.grey, tcod.black, tcod.black, tcod.red, tcod.red, \
+              tcod.grey, tcod.grey, tcod.grey, tcod.grey, tcod.grey, tcod.grey)
+    for i in range(0,12):
+        draw_entity_part(con, entity.x + x[i], entity.y + y[i], characters[i], colors[i])
+
+def build_lw_cell_5(con, entity):
+    x = (-1, +1, -3, +3, -4, +4, -2, +2, -1, +1, 0, 0)
+    y = ( +1, +1, +2, +2, +2, +2, +2, +2, +2, +2, +1, +2)
+    characters = ('(', ')', '(', ')', ':', ':', '|', '|', '|', '|', '=', '=')
+    colors = (tcod.grey, tcod.grey, tcod.black, tcod.black, tcod.red, tcod.red, \
+              tcod.grey, tcod.grey, tcod.grey, tcod.grey, tcod.grey, tcod.grey)
+    for i in range(0,12):
+        draw_entity_part(con, entity.x + x[i], entity.y + y[i], characters[i], colors[i])
+
+def build_lw_cell_6(con, entity):
+    x = (-2, +2, -3, +3, -4, +4, -2, +2, -1, +1, 0, 0)
+    y = ( +1, +1, +2, +2, +2, +2, +2, +2, +2, +2, +1, +2)
+    characters = ('(', ')', '(', ')', ':', ':', '|', '|', '|', '|', '.', '.')
+    colors = (tcod.grey, tcod.grey, tcod.black, tcod.black, tcod.red, tcod.red, \
+              tcod.grey, tcod.grey, tcod.grey, tcod.grey, tcod.grey, tcod.grey)
+    for i in range(0,12):
+        draw_entity_part(con, entity.x + x[i], entity.y + y[i], characters[i], colors[i])
+
+
+
+
+def build_lw_cell_7(con, entity):
+    walker_coordinates_x = []
+    walker_coordinates_y = []
+    x = (0, -3, +3, -4, +4, -5, +5, -2, +2, -1, +1, 0)
+    y = ( 0, +2, +2, +2, +2, +2, +2, +2, +2, +2, +2, +2)
+    for i in range(0, 12):
+        walker_coordinates_x.append(entity.x + x[i])
+        walker_coordinates_y.append(entity.y + y[i])
+
+    characters = ('.', '(', ')', '(', ')', ':', ':', '|', '|', '|', '|', ':')
+    colors = (tcod.grey, tcod.grey, tcod.grey, tcod.black, tcod.black, tcod.red, tcod.red, \
+              tcod.grey, tcod.grey, tcod.grey, tcod.grey, tcod.grey)
+    for i in range(0,12):
+        draw_entity_part(con, walker_coordinates_x[i], walker_coordinates_y[i], characters[i], colors[i])
 
 
 

@@ -15,7 +15,6 @@ def main():
     keyboard_activity = tcod.Key()
     mouse_activity = tcod.Mouse()
 
-
     while not tcod.console_is_window_closed():
         tcod.sys_check_for_event(tcod.EVENT_KEY_PRESS, keyboard_activity, mouse_activity)
 
@@ -24,6 +23,7 @@ def main():
         
         tcod.console_flush()
         clear_all()
+        
 
         # We hand over the current key result into the handle_keys function
         # This function returns a library for us that we name action
@@ -40,6 +40,7 @@ def main():
 
         # if not power:
         #     player.power = False
+            
 
         if move:
             dx, dy = move # When we used get on 'move' the result is a list of two numbers (if move even happened)
