@@ -39,9 +39,9 @@ def render_all_entities():
         draw_entity(con, entity)
 
         if entity.player and entity.power:
-            build_light_runner(con, entity)
+            build_lw_cell_2(con, entity)
         else:
-            destroy_light_runner(con, entity)
+            destroy_light_walker(con, entity)
             build_lw_cell_2(con, entity)
 
     tcod.console_blit(con, 0, 0, screen_width, screen_height, 0, 0, 0)
@@ -53,7 +53,7 @@ def clear_all():
         clear_entity(con, entity)
 
         if entity.player:
-            destroy_light_runner(con, entity)
+            destroy_light_walker(con, entity)
 
 
 
