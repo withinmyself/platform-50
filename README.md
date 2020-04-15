@@ -16,3 +16,12 @@ E.T. Deubner - April 10, 2020
 Updated a requirements.txt so as of right now, anything thats on GitHub can be cloned then you should set up a virtual environment (Python 3.7.3), install the requirements.txt using pip and run the program with 'python game_engine.py'.  Unfortuantely there isn't anything impressive there yet.  Just wanted to get that set up because I was probably going to forget.
 
 E.T.D. - April 10 - 8pm
+
+You can now "get in" the Walker and walk around then "get out" and walk around separately.  When you first start, you'll be sitting in the Walker but not piloting it yet.  If you move around you'll be separate.  Stay in the original position or go back to the original position and hit ESC.  Wait a few seconds.  Then the animation will kick in.  Once it looks like it did when you hit ESC, now you'll be able to move the whole thing around.  If you hit ENTER you will "exit" the vehicle.  
+
+Unfortunately the Walkers coordinates are tied to one spot at the moment so if you exit the Walker somewhere else it will apear where it started from.  If you walk back up to it and hit ESC you'll take it over again but the animation won't play again.
+I'll need to copy the current coordinates before saving a new Entity so you can get out anywhere.
+
+I also need to simplify the build/destroy functions down to one function that takes coordinates.  As well as clean things up in the game_engine.py and inputs.py.  The good news is the proof of concept was successful.  I just have tidy things up now and hopefully move forward.  The next thing I'd like to do is start working on how the inventory system will work when separating from the walker.  
+
+E.T.D. - April 15
