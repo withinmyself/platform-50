@@ -1,17 +1,16 @@
-import tcod
-
 import time
 
-from game.input import handle_keys
+import tcod
 
-from functions.render_functions import render_all_entities, \
-                                clear_all, render_map, game_map, \
-                                player, entities, con, npc, render_mech_animation
-from functions.walker_blueprints import *
-from game.variables import *
+from functions.input_functions import handle_keys
+from functions.render_functions import \
+    render_all_entities, clear_all, render_map, game_map, \
+    player, entities, con, npc, render_room
+
+from static.blueprints import *
+from static.variables import *
 
 def main():
-
     tcod.console_set_custom_font('arial10x10.png', tcod.FONT_TYPE_GRAYSCALE | tcod.FONT_LAYOUT_TCOD)
     tcod.console_init_root(screen_width, screen_height, 'Platform 50', False)
 
@@ -27,6 +26,7 @@ def main():
             render_map()
             render_all_entities()
             build_light_walker(con, npc)
+            render_room()
             destroy_light_walker(con, player)
             tcod.console_flush()
             clear_all()

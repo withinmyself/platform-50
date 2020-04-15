@@ -1,6 +1,5 @@
 import tcod
 
-
 def handle_keys(key):
     # Movement keys
     if key.vk == tcod.KEY_UP:
