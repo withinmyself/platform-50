@@ -46,9 +46,18 @@ y: 0, 0, 0, 0, 0, 0, +1, +1, +2, +2, +1, +2
 
 
 
+LW-50 Cell # 4
+__________
+
     @ 
 :(( = )):
   ||=||
+__________
+
+Coordinates:
+(, ), (, ), :, :, |, |, |, |, =, =
+x: -2, +2, -3, +3, -4, +4, -2, +2, -1, +1, 0, 0
+y: +1, +1, +1, +1, +1, +1, +2, +2, +2, +2, +1, +2
 
 
 
@@ -56,37 +65,33 @@ y: 0, 0, 0, 0, 0, 0, +1, +1, +2, +2, +1, +2
    (=) 
 :(||=||):
 
+(, ), (, ), :, :, |, |, |, |, =, =
+x: -1, +1, -3, +3, -4, +4, -2, +2, -1, +1, 0, 0
+y: +1, +1, +2, +2, +2, +2, +2, +2, +2, +2, +1, +2
 
 
 
- 
-   (@) 
-:(||=||):
 
 
-
+    @
   ( . ) 
-:(||@||):
+:(||.||):
+
+(, ), (, ), :, :, |, |, |, |, ., .
+x: -2, +2, -3, +3, -4, +4, -2, +2, -1, +1, 0, 0
+y: +1, +1, +2, +2, +2, +2, +2, +2, +2, +2, +1, +2
 
 
 
 
+
+     @
        
-:((||:||)): @
+:((||:||)): 
 
-
-
-
-
-
-This just happened about 2 hours ago.  So, I have a history of getting fairly consistent Sleep Paralysis where I'll either be trying to go to sleep or I'll doze off and my body goes to sleep but my mind is still awake.  It's really terrifiying the first few times it starts happening.  You sort of feel like you'll die if you can't fight your way back awake.  I've gotten used to them though and it's just something I deal with.  Sometimes it's associated with hallucinations both auditory and visual as well.  
-
-Couple hours ago, I was watching Netflix on my phone.  And while I'm holding my phone I feel like this is going to happen.  Which is common for me.  I can tell I'm falling asleep and I can tell its going to be an 'incident'.  So, I prepare myself.  Then to the left of me I hear this noise that sounds like some sort of loud machinery or something.  I can't describe it. At this point I'm still holding my phone and I can still hear my Netflix show.  Although the sound is starting to drown it out.  Then I fall straight into a deep sleep parallysis and this noise just keeps getting louder and louder.  I feel like I have my eyes open and it feels like its coming from this old projection TV we have.  It's like 50 inches or something but its one of those huge projection TVs.  Anyway I never watch it or turn it on but I swear I see static on the TV reacting to this noise and its almost like a feeback loop now that I'm looking at it while it gets fucking louder and louder.  I finally jolt myself out of the Sleep Paralysis and the noise stops.  I catch my breath.  I've never experienced anything like that before.  It fucking sucked.  The TV was off when I was fully consious again.  It's fairly possible that I just started dreaming emediately and my eyes were never open but it was so real to me.  Especially since when I looked at my phone I knew where I was at with the show so no more than maybe 10 seconds had passed.  I've experienced waking dreams before and it was never anything like this.  Never.  That's the end.  Just wanted to share so everyone can freak out equally :)  You're welcome.  Lol.  Fuck me.... 
-
-
-
-
-
+(, ), (, ), :, :, |, |, |, |, : 
+x: -3, +3, -4, +4, -5, +5, -2, +2, -1, +1, 0
+y: +2, +2, +2, +2, +2, +2, +2, +2, +2, +2, +2
 
 
 
