@@ -1,10 +1,13 @@
 import tcod
 
+import time
+
 from game.input import handle_keys
 
 from functions.render_functions import render_all_entities, \
                                 clear_all, render_map, game_map, \
-                                player, npc, entities, con
+                                player, entities, con, npc, render_mech_animation
+from functions.walker_blueprints import *
 from game.variables import *
 
 def main():
@@ -14,15 +17,142 @@ def main():
 
     keyboard_activity = tcod.Key()
     mouse_activity = tcod.Mouse()
+    build = True
+    solo = True
 
     while not tcod.console_is_window_closed():
         tcod.sys_check_for_event(tcod.EVENT_KEY_PRESS, keyboard_activity, mouse_activity)
 
-        render_all_entities()
-        render_map()
-        
-        tcod.console_flush()
-        clear_all()
+        if solo:
+            render_map()
+            render_all_entities()
+            build_light_walker(con, npc)
+            destroy_light_walker(con, player)
+            tcod.console_flush()
+            clear_all()
+
+        elif build and not solo:
+            render_map()
+            render_all_entities()
+            build_light_walker(con, player)
+            time.sleep(3)
+            destroy_light_walker(con, player)
+            tcod.console_flush()
+            clear_all()
+
+            render_map()
+            render_all_entities()
+            build_lw_cell_2(con, player)
+            time.sleep(0.2)
+            destroy_lw_cell_2(con, player)
+            tcod.console_flush()
+            clear_all()
+            
+            render_map()
+            render_all_entities()
+            build_lw_cell_3(con, player)
+            time.sleep(0.2)
+            destroy_lw_cell_3(con, player)
+            tcod.console_flush()
+            clear_all()
+
+            render_map()
+            render_all_entities()
+            build_lw_cell_4(con, player)
+            time.sleep(0.2)
+            destroy_lw_cell_4(con, player)
+            tcod.console_flush()
+            clear_all()
+
+            render_map()
+            render_all_entities()
+            build_lw_cell_5(con, player)
+            time.sleep(0.2)
+            destroy_lw_cell_5(con, player)
+            tcod.console_flush()
+            clear_all()
+
+            render_map()
+            render_all_entities()
+            build_lw_cell_6(con, player)
+            time.sleep(0.2)
+            destroy_lw_cell_6(con, player)
+            tcod.console_flush()
+            clear_all()
+
+            render_map()
+            render_all_entities()
+            build_lw_cell_7(con, player)
+            time.sleep(0.2)
+            destroy_lw_cell_7(con, player)
+            tcod.console_flush()
+            clear_all()
+
+            render_map()
+            render_all_entities()
+            build_lw_cell_7(con, player)
+            time.sleep(0.2)
+            destroy_lw_cell_7(con, player)
+            tcod.console_flush()
+            clear_all()
+
+            render_map()
+            render_all_entities()
+            build_lw_cell_6(con, player)
+            time.sleep(0.2)
+            destroy_lw_cell_6(con, player)
+            tcod.console_flush()
+            clear_all()
+
+            render_map()
+            render_all_entities()
+            build_lw_cell_5(con, player)
+            time.sleep(0.2)
+            destroy_lw_cell_5(con, player)
+            tcod.console_flush()
+            clear_all()
+
+            render_map()
+            render_all_entities()
+            build_lw_cell_4(con, player)
+            time.sleep(0.2)
+            destroy_lw_cell_4(con, player)
+            tcod.console_flush()
+            clear_all()
+
+            render_map()
+            render_all_entities()
+            build_lw_cell_3(con, player)
+            time.sleep(0.2)
+            destroy_lw_cell_3(con, player)
+            tcod.console_flush()
+            clear_all()
+
+            render_map()
+            render_all_entities()
+            build_lw_cell_2(con, player)
+            time.sleep(0.2)
+            destroy_lw_cell_2(con, player)
+            tcod.console_flush()
+            clear_all()
+
+            render_map()
+            render_all_entities()
+            build_light_walker(con, player)
+            destroy_light_walker(con, player)
+            tcod.console_flush()
+            clear_all()
+            build = False
+        else:
+            render_map()
+            render_all_entities()
+            build_light_walker(con, player)
+            destroy_light_walker(con, player)
+            tcod.console_flush()
+            clear_all()
+
+
+
         
 
         # We hand over the current key result into the handle_keys function
@@ -51,12 +181,12 @@ def main():
 
         # This dictionary key returns a boolean value that then says to return True which breaks the game loop.
         if exit:
-            return True
+            solo = False
 
         # Another boolean value which triggers a method setting fullscreen.  tcod.console_is_fullscreen() currently returns False
         # By adding not before it we change the value to True which changes the game to fullscreen.
         if fullscreen:
-            tcod.console_set_fullscreen(not tcod.console_is_fullscreen())
+            solo = True
 
 
 

@@ -11,7 +11,7 @@ class GameMap:
     def initialize_tiles(self):
         tiles = [[Tile(False) for y in range(self.height)] for x in range(self.width)]
 
-        x, y = 0, 22
+        x, y = 0, 28
 
         for x in range(10, 60):
             tiles[x][y].blocked = True
